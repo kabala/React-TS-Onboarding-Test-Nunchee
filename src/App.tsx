@@ -1,24 +1,30 @@
 import React from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
+import DefaultLayout from "./layouts/DefaultLayout";
+import { ContentPage, SpotlightPage, HomePage } from "./pages";
+import { Paths } from "./interfaces/enums";
 import "./styles/main.scss";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code>
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="nunchee">
+        <DefaultLayout>
+          <Switch>
+            {}
+            <Route exact path={Paths.Inicio}>
+              <HomePage />
+            </Route>
+            <Route exact path={Paths.Spotlight}>
+              <SpotlightPage />
+            </Route>
+            <Route path={Paths.Content}>
+              <ContentPage />
+            </Route>
+          </Switch>
+        </DefaultLayout>
+      </div>
+    </Router>
   );
 }
 

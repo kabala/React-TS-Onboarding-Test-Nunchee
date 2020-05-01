@@ -1,7 +1,8 @@
-import React, { useState, FC } from "react";
+import React, { FC } from "react";
+import withMeta from "../layouts/withMeta";
 
 const ContentPage: FC<{}> = () => {
   return <main>ContentPage</main>;
 };
 
-export default ContentPage;
+export default withMeta(ContentPage);

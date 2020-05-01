@@ -1,7 +1,8 @@
-import React, { useState, FC } from "react";
+import React, { FC } from "react";
+import withMeta from "../layouts/withMeta";
 
 const SpotLightPage: FC<{}> = () => {
   return <main>SpotLightPage</main>;
 };
 
-export default SpotLightPage;
+export default withMeta(SpotLightPage);

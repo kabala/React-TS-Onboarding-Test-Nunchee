@@ -1,12 +1,19 @@
-import React, { useState, FC, PropsWithChildren } from "react";
-import Header from "../components/organisms/Header";
+import React, { FC, PropsWithChildren } from "react";
+import { Header, Footer } from "../components";
 
-const DefaultLayout: FC<PropsWithChildren<{}>> = ({ children }) => {
+type Props = {
+  disableHeader?: boolean;
+};
+
+const DefaultLayout: FC<PropsWithChildren<Props>> = ({
+  disableHeader,
+  children,
+}) => {
   return (
     <>
-      <header></header>
+      {!disableHeader && <Header />}
       <main>{children}</main>
-      <footer></footer>
+      <Footer />
     </>
   );
 };
