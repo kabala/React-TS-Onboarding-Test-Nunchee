@@ -2,8 +2,15 @@ import React, { FC, PropsWithChildren } from "react";
 import useHelmet from "../hooks/useHelmet";
 import { Helmet } from "react-helmet";
 
-const Meta: FC<PropsWithChildren<{}>> = ({ children }) => {
-  const pageTitle = useHelmet("Super Peli");
+type Props = {
+  contentTitle?: string | null;
+};
+
+const Meta: FC<PropsWithChildren<Props>> = ({
+  children,
+  contentTitle = null,
+}) => {
+  const pageTitle = useHelmet(contentTitle);
 
   return (
     <>
