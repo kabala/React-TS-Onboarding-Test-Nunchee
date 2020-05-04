@@ -7,10 +7,9 @@ import { Paths } from "./interfaces/enums";
 import DefaultLayout from "./layouts/DefaultLayout";
 import { ContentPage, SpotlightPage, HomePage } from "./pages";
 import "./styles/main.scss";
+const store = createStore(rootReducer);
 
 function App() {
-  const store = createStore(rootReducer);
-
   return (
     <Provider store={store}>
       <Router>
