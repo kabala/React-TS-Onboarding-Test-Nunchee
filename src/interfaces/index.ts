@@ -1,9 +1,14 @@
 import { GET_ITEMS, GET_CONTENT } from "../constantsTypes/appConstantsTypes";
+import { Dispatch } from "redux";
 
 export interface AppState {
   items: Content[];
   content: Content | null;
 }
+
+export type PageProps = {
+  dispatch: Dispatch;
+};
 
 export interface Content {
   id: string;

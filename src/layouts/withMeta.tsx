@@ -1,7 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import Meta from "./Meta";
-import { RootState } from "../store/appReducer";
+import { PageProps } from "../interfaces";
+
+// import { RootState } from "../store/appReducer";
 
 /**
  * Adds custom html tags inside <head> like "title" and "description"
@@ -9,15 +11,13 @@ import { RootState } from "../store/appReducer";
  *
  * @param PageComponent Page Component
  */
-const withMeta = (PageComponent: FunctionComponent) => () => {
-  const content = useSelector((state: RootState) => state.content);
-
-  console.log("content", content);
+const withMeta = (PageComponent: FunctionComponent<PageProps>) => () => {
+  const dispatch = useDispatch();
 
   return (
     <React.StrictMode>
       <Meta>
-        <PageComponent />
+        <PageComponent dispatch={dispatch} />
       </Meta>
     </React.StrictMode>
   );

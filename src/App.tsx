@@ -1,13 +1,14 @@
 import React from "react";
-import { createStore } from "redux";
+import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
+import reduxThunk from "redux-thunk";
 import { Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import rootReducer from "./store/appReducer";
 import { Paths } from "./interfaces/enums";
 import DefaultLayout from "./layouts/DefaultLayout";
 import { ContentPage, SpotlightPage, HomePage } from "./pages";
 import "./styles/main.scss";
-const store = createStore(rootReducer);
+const store = createStore(rootReducer, applyMiddleware(reduxThunk));
 
 function App() {
   return (

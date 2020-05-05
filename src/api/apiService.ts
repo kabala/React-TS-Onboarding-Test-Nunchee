@@ -1,22 +1,15 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
-
-enum Service {
-  nunchee = "https://mychannel.nunchee.tv/api/",
-  unsplash = "https://unsplash.com/napi/search/photos?query=movie&xp=&per_page=20&page=1",
-}
+export type Methods =
+  | "GET"
+  | "POST"
+  | "PATCH"
+  | "UPDATE"
+  | "DELETE"
+  | "OPTIONS";
 
 class Api {
   private static instance: Api;
-  private _session: AxiosInstance;
 
   private constructor() {
-    this._session = axios.create({
-      baseURL: Service.nunchee,
-      headers: {
-        "X-Requested-With": "XMLHttpRequest",
-      },
-    });
-
     if (Api.instance) {
       throw new Error("Error - use Api.getInstance()");
     }
@@ -27,27 +20,16 @@ class Api {
     return Api.instance;
   }
 
-  private _imageServiceRequest(
-    uri: string,
-    method: AxiosRequestConfig["method"]
-  ) {
-    return this._session({ url: uri, baseURL: Service.unsplash, method });
-  }
-
-  public async call(
-    uri: string,
-    method: AxiosRequestConfig["method"],
-    imageService = false
-  ) {
+  public async call(uri: string = "", method: Methods = "GET") {
     try {
-      if (imageService) {
-        return await this._imageServiceRequest(uri, method);
-      }
-
-      return await this._session({ url: uri, method });
-    } catch (e) {
-      console.log("request error", e);
-      return { error: e };
+      const request = await fetch(uri, {
+        method,
+      });
+      return await request.json();
+    } catch (error) {
+      return {
+        ok: false,
+      };
     }
   }
 }
