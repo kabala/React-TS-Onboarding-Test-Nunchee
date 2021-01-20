@@ -21,7 +21,7 @@
     "@types/react-router-dom": "^5.1.5",
     "@types/redux": "^3.6.0",
     "axios": "^0.19.2",
-    "gsap": "^3.2.6",
+    "gsap": "^3.6.0",
     "lodash-es": "^4.17.15",
     "node-sass": "^4.14.0",
     "react": "^16.13.1",
